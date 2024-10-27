@@ -1,14 +1,9 @@
 import "./index.scss";
 import { useBlockProps } from "@wordpress/block-editor";
 import { registerBlockType, BlockEditProps, BlockConfiguration } from "@wordpress/blocks";
-import metadata from "./block.json";
+import metadata from "../block.json";
 import React from "react";
-
-// Attribute-Typen definieren
-interface Attributes {
-  skyColor: string;
-  grassColor: string;
-}
+import { Attributes } from "../interfaces/iIAttributes";
 
 // Block-Konfiguration explizit festlegen und Metadaten manuell auflisten
 const blockSettings: BlockConfiguration<Attributes> = {

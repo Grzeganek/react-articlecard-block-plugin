@@ -111,6 +111,7 @@
     "module": "esnext",
     "target": "es5",
     "moduleResolution": "node",
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "lib": ["ES6", "DOM"]
   }
 }

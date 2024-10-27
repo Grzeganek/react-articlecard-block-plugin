@@ -2,10 +2,10 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/index.scss":
-/*!************************!*\
-  !*** ./src/index.scss ***!
-  \************************/
+/***/ "./src/components/index.scss":
+/*!***********************************!*\
+  !*** ./src/components/index.scss ***!
+  \***********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -50,7 +50,7 @@ module.exports = window["wp"]["blocks"];
   \************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"makeupnamespace/make-up-block-name","version":"0.1.0","title":"ArticleCard Block","category":"common","icon":"welcome-learn-more","description":"Ein einfacher React-Testblock.","textdomain":"my-plugin","attributes":{"skyColor":{"type":"string"},"grassColor":{"type":"string"}},"editorScript":"file:./index.tsx.js","editorStyle":"file:./index.tsx.css","style":"file:./frontend.tsx.css","render":"file:./render.php","viewScript":"file:./frontend.tsx.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"makeupnamespace/make-up-block-name","version":"0.1.0","title":"ArticleCard Block","category":"common","icon":"welcome-learn-more","description":"Ein einfacher React-Testblock.","textdomain":"my-plugin","attributes":{"skyColor":{"type":"string"},"grassColor":{"type":"string"}},"editorScript":"file:./index.tsx.js","editorStyle":"file:./index.tsx.css","style":"file:./ArtikelCard.tsx.css","render":"file:./render.php","viewScript":"file:./ArtikelCard.tsx.js"}');
 
 /***/ })
 
@@ -125,26 +125,23 @@ module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/tru
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
-/*!***********************!*\
-  !*** ./src/index.tsx ***!
-  \***********************/
+/*!**********************************!*\
+  !*** ./src/components/index.tsx ***!
+  \**********************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index.scss */ "./src/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index.scss */ "./src/components/index.scss");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./block.json */ "./src/block.json");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../block.json */ "./src/block.json");
 
 
 
 
 
-
-
-// Attribute-Typen definieren
 
 // Block-Konfiguration explizit festlegen und Metadaten manuell auflisten
 const blockSettings = {

@@ -5,8 +5,8 @@
   "scripts": {
     "preview": "npm-run-all --parallel sync start",
     "sync": "browser-sync start --proxy 'https://localhost/wordpress' --startPath '/?page_id=2' --files '**/*.php' 'build/*.js' 'build/*.css'",
-    "build": "wp-scripts build src/index.tsx src/frontend.tsx",
-    "start": "wp-scripts start src/index.tsx src/frontend.tsx",
+    "build": "wp-scripts build src/components/index.tsx src/components/ArtikelCard.tsx",
+    "start": "wp-scripts start src/components/index.tsx src/components/ArtikelCard.tsx",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -25,6 +25,7 @@
   "dependencies": {
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
-    "@mui/material": "^6.1.5"
+    "@mui/material": "^6.1.5",
+    "axios": "^1.7.7"
   }
 }
