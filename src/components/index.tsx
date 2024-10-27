@@ -1,41 +1,67 @@
 import "./index.scss";
 import { useBlockProps } from "@wordpress/block-editor";
-import { registerBlockType, BlockEditProps, BlockConfiguration } from "@wordpress/blocks";
+import { registerBlockType, BlockConfiguration, BlockEditProps } from "@wordpress/blocks";
 import metadata from "../block.json";
-import React from "react";
-import { Attributes } from "../interfaces/iIAttributes";
+import React, { useState } from "react";
+import { Button, Card, CardContent, CardMedia, Typography } from "@mui/material";
+import { fetchArticles } from "../api/api.ruhrnachrichten";
+import { Article } from "../interfaces/IArticle";
 
-// Block-Konfiguration explizit festlegen und Metadaten manuell auflisten
-const blockSettings: BlockConfiguration<Attributes> = {
+// Block-Konfiguration
+const blockSettings: BlockConfiguration = {
   ...metadata,
-  attributes: {
-    skyColor: { type: "string" },
-    grassColor: { type: "string" },
-  },
-  icon: {
-    // Icon manuell festlegen
-    src: "welcome-learn-more",
-  },
+  icon: { src: "welcome-learn-more" },
   edit: EditComponent,
 };
 
-registerBlockType<Attributes>(metadata.name, blockSettings);
+registerBlockType(metadata.name, blockSettings);
 
-function EditComponent(props: BlockEditProps<Attributes>) {
-  function updateSkyColor(e: React.ChangeEvent<HTMLInputElement>) {
-    props.setAttributes({ skyColor: e.target.value });
-  }
+interface BlockAttributes {} // Leeres Interface für die Block-Attribute
 
-  function updateGrassColor(e: React.ChangeEvent<HTMLInputElement>) {
-    props.setAttributes({ grassColor: e.target.value });
-  }
+function EditComponent(props: BlockEditProps<BlockAttributes>) {
+  const [articles, setArticles] = useState<Article[]>([]);
+  const [error, setError] = useState<string | null>(null);
+
+  // Funktion für den Klick-Event, um die API-Daten zu laden
+  const loadArticles = async () => {
+    const result = await fetchArticles();
+    if (result.success) {
+      setArticles(result.data || []);
+    } else {
+      setError(result.error || "Unbekannter Fehler");
+    }
+  };
 
   return (
     <div {...useBlockProps()}>
-      <div className="makeUpYourBlockTypeName">
-        <input type="text" value={props.attributes.skyColor || ""} onChange={updateSkyColor} placeholder="sky color..." />
-        <input type="text" value={props.attributes.grassColor || ""} onChange={updateGrassColor} placeholder="grass color..." />
-      </div>
+      <Button variant="contained" color="primary" onClick={loadArticles}>
+        Lade Artikel
+      </Button>
+
+      {error && <div className="error">Fehler beim Laden der Artikel: {error}</div>}
+
+      {articles.length > 0 && (
+        <div className="article-list">
+          {articles.map((article) => (
+            <Card sx={{ margin: 2 }} key={article.id}>
+              <CardMedia component="img" height="140" image={article.featured_media_url || "https://example.com/path/to/image.jpg"} alt={article.title.rendered || "Kein Titel"} />
+              <CardContent>
+                <Typography variant="h5" color="text.primary">
+                  {article.title.rendered}
+                </Typography>
+                <Typography variant="body1" color="text.secondary">
+                  Autor: {article._embedded?.author?.[0]?.name || "Unbekannt"}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Kategorie: {article._embedded?.["wp:term"]?.[0]?.[0]?.name || "Keine Kategorie"}
+                </Typography>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
+
+export default EditComponent;
