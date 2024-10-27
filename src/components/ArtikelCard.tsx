@@ -34,7 +34,6 @@ function OurComponent(props: OurComponentProps) {
       const result = await fetchArticles();
       if (result.success) {
         setArticles(result.data || []);
-        console.log("Daten", articles);
       } else {
         setError(result.error || "Unbekannter Fehler");
       }
@@ -43,45 +42,32 @@ function OurComponent(props: OurComponentProps) {
     loadArticles();
   }, []);
 
-  const data = {
-    card: {
-      featured_media_url: "https://example.com/path/to/image.jpg",
-      title: {
-        rendered: "Beispieltitel für einen Artikel",
-      },
-      author: {
-        name: "Max Mustermann",
-      },
-      category: {
-        name: "Nachrichten",
-      },
-    },
-  };
+  if (error) {
+    return <div className="error">Fehler beim Laden der Artikel: {error}</div>;
+  }
+
   return (
     <div className="frontend">
-      <Card sx={{ margin: 2 }}>
-        <CardMedia component="img" height="140" image={data.card.featured_media_url} alt={data.card.title.rendered} />
-        <CardContent>
-          <Typography variant="h5" color="red" component="div">
-            {data.card.title.rendered}
-          </Typography>
-          <Typography variant="h5" color="blue" component="div">
-            Autor: {data.card.author.name}
-          </Typography>
-          <Typography variant="h5" color="text.secondary" component="div">
-            Kategorie: {data.card.category.name}
-          </Typography>
-        </CardContent>
-      </Card>
-
-      <p>
-        <Button sx={{ marginTop: 1, marginRight: 1 }} variant="contained">
-          Toggle view grass color !!!
-        </Button>
-        <Button sx={{ marginTop: 1 }} variant="contained">
-          Toggle view sky color ???
-        </Button>
-      </p>
+      {articles.length > 0 ? (
+        articles.map((article) => (
+          <Card sx={{ margin: 2 }} key={article.id}>
+            <CardMedia component="img" height="140" image={article.featured_media_url || "https://example.com/path/to/image.jpg"} alt={article.title.rendered || "Kein Titel"} />
+            <CardContent>
+              <Typography variant="h5" color="text.primary">
+                {article.title.rendered}
+              </Typography>
+              <Typography variant="body1" color="text.secondary">
+                Autor: {article._embedded.author[0].name || "Unbekannt"}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Kategorie: {article._embedded["wp:term"][0][0].name || "Keine Kategorie"}
+              </Typography>
+            </CardContent>
+          </Card>
+        ))
+      ) : (
+        <div>Keine Artikel gefunden</div>
+      )}
     </div>
   );
 }
