@@ -1,0 +1,25 @@
+{
+  "name": "react-articlecard-block-plugin",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "preview": "npm-run-all --parallel sync start",
+    "sync": "browser-sync start --proxy 'https://localhost/wordpress' --startPath '/?page_id=2' --files '**/*.php' 'build/*.js' 'build/*.css'",
+    "build": "wp-scripts build src/index.tsx src/frontend.tsx",
+    "start": "wp-scripts start src/index.tsx src/frontend.tsx",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@types/wordpress__block-editor": "^11.5.15",
+    "@wordpress/scripts": "^27.9.0",
+    "browser-sync": "^3.0.2",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^5.6.3"
+  }
+}
