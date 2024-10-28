@@ -3307,6 +3307,344 @@ const cardClasses = (0,_mui_utils_generateUtilityClasses__WEBPACK_IMPORTED_MODUL
 
 /***/ }),
 
+/***/ "./node_modules/@mui/material/CircularProgress/CircularProgress.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/@mui/material/CircularProgress/CircularProgress.js ***!
+  \*************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! clsx */ "./node_modules/clsx/dist/clsx.mjs");
+/* harmony import */ var _mui_utils_chainPropTypes__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @mui/utils/chainPropTypes */ "./node_modules/@mui/utils/esm/chainPropTypes/chainPropTypes.js");
+/* harmony import */ var _mui_utils_composeClasses__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/utils/composeClasses */ "./node_modules/@mui/utils/esm/composeClasses/composeClasses.js");
+/* harmony import */ var _zero_styled_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../zero-styled/index.js */ "./node_modules/@emotion/react/dist/emotion-react.browser.development.esm.js");
+/* harmony import */ var _zero_styled_index_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../zero-styled/index.js */ "./node_modules/@mui/material/styles/styled.js");
+/* harmony import */ var _utils_memoTheme_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../utils/memoTheme.js */ "./node_modules/@mui/material/utils/memoTheme.js");
+/* harmony import */ var _DefaultPropsProvider_index_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../DefaultPropsProvider/index.js */ "./node_modules/@mui/material/DefaultPropsProvider/DefaultPropsProvider.js");
+/* harmony import */ var _utils_capitalize_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/capitalize.js */ "./node_modules/@mui/material/utils/capitalize.js");
+/* harmony import */ var _utils_createSimplePaletteValueFilter_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../utils/createSimplePaletteValueFilter.js */ "./node_modules/@mui/material/utils/createSimplePaletteValueFilter.js");
+/* harmony import */ var _circularProgressClasses_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./circularProgressClasses.js */ "./node_modules/@mui/material/CircularProgress/circularProgressClasses.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+'use client';
+
+
+
+
+
+
+
+
+
+
+
+
+
+const SIZE = 44;
+const circularRotateKeyframe = (0,_zero_styled_index_js__WEBPACK_IMPORTED_MODULE_3__.keyframes)`
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+`;
+const circularDashKeyframe = (0,_zero_styled_index_js__WEBPACK_IMPORTED_MODULE_3__.keyframes)`
+  0% {
+    stroke-dasharray: 1px, 200px;
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    stroke-dasharray: 100px, 200px;
+    stroke-dashoffset: -15px;
+  }
+
+  100% {
+    stroke-dasharray: 100px, 200px;
+    stroke-dashoffset: -125px;
+  }
+`;
+
+// This implementation is for supporting both Styled-components v4+ and Pigment CSS.
+// A global animation has to be created here for Styled-components v4+ (https://github.com/styled-components/styled-components/blob/main/packages/styled-components/src/utils/errors.md#12).
+// which can be done by checking typeof indeterminate1Keyframe !== 'string' (at runtime, Pigment CSS transform keyframes`` to a string).
+const rotateAnimation = typeof circularRotateKeyframe !== 'string' ? (0,_zero_styled_index_js__WEBPACK_IMPORTED_MODULE_3__.css)`
+        animation: ${circularRotateKeyframe} 1.4s linear infinite;
+      ` : null;
+const dashAnimation = typeof circularDashKeyframe !== 'string' ? (0,_zero_styled_index_js__WEBPACK_IMPORTED_MODULE_3__.css)`
+        animation: ${circularDashKeyframe} 1.4s ease-in-out infinite;
+      ` : null;
+const useUtilityClasses = ownerState => {
+  const {
+    classes,
+    variant,
+    color,
+    disableShrink
+  } = ownerState;
+  const slots = {
+    root: ['root', variant, `color${(0,_utils_capitalize_js__WEBPACK_IMPORTED_MODULE_4__["default"])(color)}`],
+    svg: ['svg'],
+    circle: ['circle', `circle${(0,_utils_capitalize_js__WEBPACK_IMPORTED_MODULE_4__["default"])(variant)}`, disableShrink && 'circleDisableShrink']
+  };
+  return (0,_mui_utils_composeClasses__WEBPACK_IMPORTED_MODULE_5__["default"])(slots, _circularProgressClasses_js__WEBPACK_IMPORTED_MODULE_6__.getCircularProgressUtilityClass, classes);
+};
+const CircularProgressRoot = (0,_zero_styled_index_js__WEBPACK_IMPORTED_MODULE_7__["default"])('span', {
+  name: 'MuiCircularProgress',
+  slot: 'Root',
+  overridesResolver: (props, styles) => {
+    const {
+      ownerState
+    } = props;
+    return [styles.root, styles[ownerState.variant], styles[`color${(0,_utils_capitalize_js__WEBPACK_IMPORTED_MODULE_4__["default"])(ownerState.color)}`]];
+  }
+})((0,_utils_memoTheme_js__WEBPACK_IMPORTED_MODULE_8__["default"])(({
+  theme
+}) => ({
+  display: 'inline-block',
+  variants: [{
+    props: {
+      variant: 'determinate'
+    },
+    style: {
+      transition: theme.transitions.create('transform')
+    }
+  }, {
+    props: {
+      variant: 'indeterminate'
+    },
+    style: rotateAnimation || {
+      animation: `${circularRotateKeyframe} 1.4s linear infinite`
+    }
+  }, ...Object.entries(theme.palette).filter((0,_utils_createSimplePaletteValueFilter_js__WEBPACK_IMPORTED_MODULE_9__["default"])()).map(([color]) => ({
+    props: {
+      color
+    },
+    style: {
+      color: (theme.vars || theme).palette[color].main
+    }
+  }))]
+})));
+const CircularProgressSVG = (0,_zero_styled_index_js__WEBPACK_IMPORTED_MODULE_7__["default"])('svg', {
+  name: 'MuiCircularProgress',
+  slot: 'Svg',
+  overridesResolver: (props, styles) => styles.svg
+})({
+  display: 'block' // Keeps the progress centered
+});
+const CircularProgressCircle = (0,_zero_styled_index_js__WEBPACK_IMPORTED_MODULE_7__["default"])('circle', {
+  name: 'MuiCircularProgress',
+  slot: 'Circle',
+  overridesResolver: (props, styles) => {
+    const {
+      ownerState
+    } = props;
+    return [styles.circle, styles[`circle${(0,_utils_capitalize_js__WEBPACK_IMPORTED_MODULE_4__["default"])(ownerState.variant)}`], ownerState.disableShrink && styles.circleDisableShrink];
+  }
+})((0,_utils_memoTheme_js__WEBPACK_IMPORTED_MODULE_8__["default"])(({
+  theme
+}) => ({
+  stroke: 'currentColor',
+  variants: [{
+    props: {
+      variant: 'determinate'
+    },
+    style: {
+      transition: theme.transitions.create('stroke-dashoffset')
+    }
+  }, {
+    props: {
+      variant: 'indeterminate'
+    },
+    style: {
+      // Some default value that looks fine waiting for the animation to kicks in.
+      strokeDasharray: '80px, 200px',
+      strokeDashoffset: 0 // Add the unit to fix a Edge 16 and below bug.
+    }
+  }, {
+    props: ({
+      ownerState
+    }) => ownerState.variant === 'indeterminate' && !ownerState.disableShrink,
+    style: dashAnimation || {
+      // At runtime for Pigment CSS, `bufferAnimation` will be null and the generated keyframe will be used.
+      animation: `${circularDashKeyframe} 1.4s ease-in-out infinite`
+    }
+  }]
+})));
+
+/**
+ * ## ARIA
+ *
+ * If the progress bar is describing the loading progress of a particular region of a page,
+ * you should use `aria-describedby` to point to the progress bar, and set the `aria-busy`
+ * attribute to `true` on that region until it has finished loading.
+ */
+const CircularProgress = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(function CircularProgress(inProps, ref) {
+  const props = (0,_DefaultPropsProvider_index_js__WEBPACK_IMPORTED_MODULE_10__.useDefaultProps)({
+    props: inProps,
+    name: 'MuiCircularProgress'
+  });
+  const {
+    className,
+    color = 'primary',
+    disableShrink = false,
+    size = 40,
+    style,
+    thickness = 3.6,
+    value = 0,
+    variant = 'indeterminate',
+    ...other
+  } = props;
+  const ownerState = {
+    ...props,
+    color,
+    disableShrink,
+    size,
+    thickness,
+    value,
+    variant
+  };
+  const classes = useUtilityClasses(ownerState);
+  const circleStyle = {};
+  const rootStyle = {};
+  const rootProps = {};
+  if (variant === 'determinate') {
+    const circumference = 2 * Math.PI * ((SIZE - thickness) / 2);
+    circleStyle.strokeDasharray = circumference.toFixed(3);
+    rootProps['aria-valuenow'] = Math.round(value);
+    circleStyle.strokeDashoffset = `${((100 - value) / 100 * circumference).toFixed(3)}px`;
+    rootStyle.transform = 'rotate(-90deg)';
+  }
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(CircularProgressRoot, {
+    className: (0,clsx__WEBPACK_IMPORTED_MODULE_1__["default"])(classes.root, className),
+    style: {
+      width: size,
+      height: size,
+      ...rootStyle,
+      ...style
+    },
+    ownerState: ownerState,
+    ref: ref,
+    role: "progressbar",
+    ...rootProps,
+    ...other,
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(CircularProgressSVG, {
+      className: classes.svg,
+      ownerState: ownerState,
+      viewBox: `${SIZE / 2} ${SIZE / 2} ${SIZE} ${SIZE}`,
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(CircularProgressCircle, {
+        className: classes.circle,
+        style: circleStyle,
+        ownerState: ownerState,
+        cx: SIZE,
+        cy: SIZE,
+        r: (SIZE - thickness) / 2,
+        fill: "none",
+        strokeWidth: thickness
+      })
+    })
+  });
+});
+ true ? CircularProgress.propTypes /* remove-proptypes */ = {
+  // ┌────────────────────────────── Warning ──────────────────────────────┐
+  // │ These PropTypes are generated from the TypeScript type definitions. │
+  // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
+  // └─────────────────────────────────────────────────────────────────────┘
+  /**
+   * Override or extend the styles applied to the component.
+   */
+  classes: (prop_types__WEBPACK_IMPORTED_MODULE_11___default().object),
+  /**
+   * @ignore
+   */
+  className: (prop_types__WEBPACK_IMPORTED_MODULE_11___default().string),
+  /**
+   * The color of the component.
+   * It supports both default and custom theme colors, which can be added as shown in the
+   * [palette customization guide](https://mui.com/material-ui/customization/palette/#custom-colors).
+   * @default 'primary'
+   */
+  color: prop_types__WEBPACK_IMPORTED_MODULE_11___default().oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_11___default().oneOf(['inherit', 'primary', 'secondary', 'error', 'info', 'success', 'warning']), (prop_types__WEBPACK_IMPORTED_MODULE_11___default().string)]),
+  /**
+   * If `true`, the shrink animation is disabled.
+   * This only works if variant is `indeterminate`.
+   * @default false
+   */
+  disableShrink: (0,_mui_utils_chainPropTypes__WEBPACK_IMPORTED_MODULE_12__["default"])((prop_types__WEBPACK_IMPORTED_MODULE_11___default().bool), props => {
+    if (props.disableShrink && props.variant && props.variant !== 'indeterminate') {
+      return new Error('MUI: You have provided the `disableShrink` prop ' + 'with a variant other than `indeterminate`. This will have no effect.');
+    }
+    return null;
+  }),
+  /**
+   * The size of the component.
+   * If using a number, the pixel unit is assumed.
+   * If using a string, you need to provide the CSS unit, for example '3rem'.
+   * @default 40
+   */
+  size: prop_types__WEBPACK_IMPORTED_MODULE_11___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_11___default().number), (prop_types__WEBPACK_IMPORTED_MODULE_11___default().string)]),
+  /**
+   * @ignore
+   */
+  style: (prop_types__WEBPACK_IMPORTED_MODULE_11___default().object),
+  /**
+   * The system prop that allows defining system overrides as well as additional CSS styles.
+   */
+  sx: prop_types__WEBPACK_IMPORTED_MODULE_11___default().oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_11___default().arrayOf(prop_types__WEBPACK_IMPORTED_MODULE_11___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_11___default().func), (prop_types__WEBPACK_IMPORTED_MODULE_11___default().object), (prop_types__WEBPACK_IMPORTED_MODULE_11___default().bool)])), (prop_types__WEBPACK_IMPORTED_MODULE_11___default().func), (prop_types__WEBPACK_IMPORTED_MODULE_11___default().object)]),
+  /**
+   * The thickness of the circle.
+   * @default 3.6
+   */
+  thickness: (prop_types__WEBPACK_IMPORTED_MODULE_11___default().number),
+  /**
+   * The value of the progress indicator for the determinate variant.
+   * Value between 0 and 100.
+   * @default 0
+   */
+  value: (prop_types__WEBPACK_IMPORTED_MODULE_11___default().number),
+  /**
+   * The variant to use.
+   * Use indeterminate when there is no progress value.
+   * @default 'indeterminate'
+   */
+  variant: prop_types__WEBPACK_IMPORTED_MODULE_11___default().oneOf(['determinate', 'indeterminate'])
+} : 0;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CircularProgress);
+
+/***/ }),
+
+/***/ "./node_modules/@mui/material/CircularProgress/circularProgressClasses.js":
+/*!********************************************************************************!*\
+  !*** ./node_modules/@mui/material/CircularProgress/circularProgressClasses.js ***!
+  \********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   getCircularProgressUtilityClass: () => (/* binding */ getCircularProgressUtilityClass)
+/* harmony export */ });
+/* harmony import */ var _mui_utils_generateUtilityClasses__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @mui/utils/generateUtilityClasses */ "./node_modules/@mui/utils/esm/generateUtilityClasses/generateUtilityClasses.js");
+/* harmony import */ var _mui_utils_generateUtilityClass__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @mui/utils/generateUtilityClass */ "./node_modules/@mui/utils/esm/generateUtilityClass/generateUtilityClass.js");
+
+
+function getCircularProgressUtilityClass(slot) {
+  return (0,_mui_utils_generateUtilityClass__WEBPACK_IMPORTED_MODULE_0__["default"])('MuiCircularProgress', slot);
+}
+const circularProgressClasses = (0,_mui_utils_generateUtilityClasses__WEBPACK_IMPORTED_MODULE_1__["default"])('MuiCircularProgress', ['root', 'determinate', 'indeterminate', 'colorPrimary', 'colorSecondary', 'svg', 'circle', 'circleDeterminate', 'circleIndeterminate', 'circleDisableShrink']);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (circularProgressClasses);
+
+/***/ }),
+
 /***/ "./node_modules/@mui/material/DefaultPropsProvider/DefaultPropsProvider.js":
 /*!*********************************************************************************!*\
   !*** ./node_modules/@mui/material/DefaultPropsProvider/DefaultPropsProvider.js ***!
@@ -18969,10 +19307,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Card/Card.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/CardMedia/CardMedia.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/CardContent/CardContent.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Typography/Typography.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/CircularProgress/CircularProgress.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Typography/Typography.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Card/Card.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/CardContent/CardContent.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/CardMedia/CardMedia.js");
 /* harmony import */ var _ArtikelCard_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ArtikelCard.scss */ "./src/components/ArtikelCard.scss");
 /* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
 /* harmony import */ var _api_api_ruhrnachrichten__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../api/api.ruhrnachrichten */ "./src/api/api.ruhrnachrichten.ts");
@@ -18982,14 +19321,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-// Typen für die Attribute definieren
-
 const divsToUpdate = document.querySelectorAll(".update");
 divsToUpdate.forEach(div => {
   const preElement = div.querySelector("pre");
   if (preElement) {
-    // Null-Check hinzufügen
     const data = JSON.parse(preElement.innerText);
     const root = react_dom_client__WEBPACK_IMPORTED_MODULE_2__.createRoot(div);
     root.render((0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(OurComponent, {
@@ -18998,20 +19333,55 @@ divsToUpdate.forEach(div => {
     div.classList.remove("update");
   }
 });
-function OurComponent(props) {
+function OurComponent() {
   const [articles, setArticles] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
+  const [isLoading, setIsLoading] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
+  const [progress, setProgress] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     const loadArticles = async () => {
+      setIsLoading(true);
+
+      // Simulierten Fortschritt starten
+      const progressInterval = setInterval(() => {
+        setProgress(prev => prev >= 90 ? 95 : prev + 5);
+      }, 250); // Fortschritt alle 250ms um 5% erhöhen, bis 90% erreicht ist
+
+      // API-Anfrage starten
       const result = await (0,_api_api_ruhrnachrichten__WEBPACK_IMPORTED_MODULE_3__.fetchArticles)();
+      clearInterval(progressInterval); // Stoppe den Fortschritts-Timer
+      setProgress(100); // Fortschritt auf 100% setzen, wenn die Daten vollständig geladen sind
+
       if (result.success) {
         setArticles(result.data || []);
       } else {
         setError(result.error || "Unbekannter Fehler");
       }
+      setIsLoading(false);
     };
     loadArticles();
   }, []);
+  if (isLoading) {
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "loading-indicator",
+      style: {
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center"
+      }
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_mui_material__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      variant: "determinate",
+      value: progress
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      variant: "h4"
+    }, "Ruhr Nachrichten "), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      variant: "body1",
+      color: "text.secondary",
+      style: {
+        marginTop: "10px"
+      }
+    }, "Bitte warten, Nachrichten werden geladen... (", progress, "%)"));
+  }
   if (error) {
     return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "error"
@@ -19019,26 +19389,26 @@ function OurComponent(props) {
   }
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "frontend"
-  }, articles.length > 0 ? articles.map(article => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_mui_material__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }, articles.length > 0 ? articles.map(article => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_mui_material__WEBPACK_IMPORTED_MODULE_6__["default"], {
     sx: {
       margin: 2
     },
     key: article.id
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_mui_material__WEBPACK_IMPORTED_MODULE_7__["default"], null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_mui_material__WEBPACK_IMPORTED_MODULE_8__["default"], {
     component: "img",
-    height: "140",
-    image: article.featured_media_url || "https://example.com/path/to/image.jpg",
+    height: "auto",
+    image: article._embedded["wp:featuredmedia"][0].source_url,
     alt: article.title.rendered || "Kein Titel"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_mui_material__WEBPACK_IMPORTED_MODULE_6__["default"], null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_mui_material__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
     variant: "h5",
     color: "text.primary"
-  }, article.title.rendered), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_mui_material__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }, article.title.rendered), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
     variant: "body1",
     color: "text.secondary"
-  }, "Autor: ", article._embedded.author[0].name || "Unbekannt"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_mui_material__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }, "Autor: ", article._embedded?.author?.[0]?.name || "Unbekannt"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
     variant: "body2",
     color: "text.secondary"
-  }, "Kategorie: ", article._embedded["wp:term"][0][0].name || "Keine Kategorie")))) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, "Keine Artikel gefunden"));
+  }, "Kategorie: ", article._embedded?.["wp:term"]?.[0]?.[0]?.name || "Keine Kategorie")))) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, "Keine Artikel gefunden"));
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (OurComponent);
 })();
