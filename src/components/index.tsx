@@ -44,7 +44,7 @@ function EditComponent(props: BlockEditProps<BlockAttributes>) {
         <div className="article-list">
           {articles.map((article) => (
             <Card sx={{ margin: 2 }} key={article.id}>
-              <CardMedia component="img" height="140" image={article.featured_media_url || "https://example.com/path/to/image.jpg"} alt={article.title.rendered || "Kein Titel"} />
+              <CardMedia component="img" height="140" image={article._embedded["wp:featuredmedia"][0].source_url} alt={article.title.rendered || "Kein Titel"} />
               <CardContent>
                 <Typography variant="h5" color="text.primary">
                   {article.title.rendered}

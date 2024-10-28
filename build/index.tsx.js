@@ -21563,7 +21563,7 @@ function EditComponent(props) {
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_mui_material__WEBPACK_IMPORTED_MODULE_8__["default"], {
     component: "img",
     height: "140",
-    image: article.featured_media_url || "https://example.com/path/to/image.jpg",
+    image: article._embedded["wp:featuredmedia"][0].source_url,
     alt: article.title.rendered || "Kein Titel"
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_mui_material__WEBPACK_IMPORTED_MODULE_9__["default"], null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_mui_material__WEBPACK_IMPORTED_MODULE_10__["default"], {
     variant: "h5",

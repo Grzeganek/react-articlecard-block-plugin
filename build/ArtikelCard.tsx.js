@@ -18970,8 +18970,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Card/Card.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/CardMedia/CardMedia.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/CardContent/CardContent.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/CardContent/CardContent.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/CardMedia/CardMedia.js");
 /* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Typography/Typography.js");
 /* harmony import */ var _ArtikelCard_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ArtikelCard.scss */ "./src/components/ArtikelCard.scss");
 /* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
@@ -19024,21 +19024,21 @@ function OurComponent(props) {
       margin: 2
     },
     key: article.id
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_mui_material__WEBPACK_IMPORTED_MODULE_6__["default"], {
     component: "img",
-    height: "140",
-    image: article.featured_media_url || "https://example.com/path/to/image.jpg",
+    height: "auto",
+    image: article._embedded["wp:featuredmedia"][0].source_url,
     alt: article.title.rendered || "Kein Titel"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_mui_material__WEBPACK_IMPORTED_MODULE_6__["default"], null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_mui_material__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_mui_material__WEBPACK_IMPORTED_MODULE_7__["default"], {
     variant: "h5",
     color: "text.primary"
   }, article.title.rendered), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_mui_material__WEBPACK_IMPORTED_MODULE_7__["default"], {
     variant: "body1",
     color: "text.secondary"
-  }, "Autor: ", article._embedded.author[0].name || "Unbekannt"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_mui_material__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }, "Autor: ", article._embedded?.author?.[0]?.name || "Unbekannt"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_mui_material__WEBPACK_IMPORTED_MODULE_7__["default"], {
     variant: "body2",
     color: "text.secondary"
-  }, "Kategorie: ", article._embedded["wp:term"][0][0].name || "Keine Kategorie")))) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, "Keine Artikel gefunden"));
+  }, "Kategorie: ", article._embedded?.["wp:term"]?.[0]?.[0]?.name || "Keine Kategorie")))) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, "Keine Artikel gefunden"));
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (OurComponent);
 })();

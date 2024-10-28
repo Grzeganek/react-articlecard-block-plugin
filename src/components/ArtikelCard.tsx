@@ -51,16 +51,16 @@ function OurComponent(props: OurComponentProps) {
       {articles.length > 0 ? (
         articles.map((article) => (
           <Card sx={{ margin: 2 }} key={article.id}>
-            <CardMedia component="img" height="140" image={article.featured_media_url || "https://example.com/path/to/image.jpg"} alt={article.title.rendered || "Kein Titel"} />
             <CardContent>
+              <CardMedia component="img" height="auto" image={article._embedded["wp:featuredmedia"][0].source_url} alt={article.title.rendered || "Kein Titel"} />
               <Typography variant="h5" color="text.primary">
                 {article.title.rendered}
               </Typography>
               <Typography variant="body1" color="text.secondary">
-                Autor: {article._embedded.author[0].name || "Unbekannt"}
+                Autor: {article._embedded?.author?.[0]?.name || "Unbekannt"}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Kategorie: {article._embedded["wp:term"][0][0].name || "Keine Kategorie"}
+                Kategorie: {article._embedded?.["wp:term"]?.[0]?.[0]?.name || "Keine Kategorie"}
               </Typography>
             </CardContent>
           </Card>
