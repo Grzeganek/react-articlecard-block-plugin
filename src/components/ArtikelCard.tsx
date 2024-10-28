@@ -68,6 +68,9 @@ function OurComponent() {
 
   return (
     <div className="frontend">
+      <Typography sx={{ marginBottom: 2 }} variant="h4">
+        Ruhr Nachrichten
+      </Typography>
       <Grid container spacing={2}>
         {articles.length > 0 ? (
           articles.map((article) => (
