@@ -1,11 +1,8 @@
-import "./index.scss";
 import { useBlockProps } from "@wordpress/block-editor";
 import { registerBlockType, BlockConfiguration, BlockEditProps } from "@wordpress/blocks";
 import metadata from "../block.json";
-import React, { useState } from "react";
-import { Button, Card, CardContent, CardMedia, Typography } from "@mui/material";
-import { fetchArticles } from "../api/api.ruhrnachrichten";
-import { Article } from "../interfaces/IArticle";
+import React from "react";
+import { Card, CardContent, Typography } from "@mui/material";
 
 // Block-Konfiguration
 const blockSettings: BlockConfiguration = {
@@ -16,50 +13,20 @@ const blockSettings: BlockConfiguration = {
 
 registerBlockType(metadata.name, blockSettings);
 
-interface BlockAttributes {} // Leeres Interface für die Block-Attribute
+// Leeres Interface für die Block-Attribute
+interface BlockAttributes {}
 
+// Statische Vorschau-Komponente für den Editor
 function EditComponent(props: BlockEditProps<BlockAttributes>) {
-  const [articles, setArticles] = useState<Article[]>([]);
-  const [error, setError] = useState<string | null>(null);
-
-  // Funktion für den Klick-Event, um die API-Daten zu laden
-  const loadArticles = async () => {
-    const result = await fetchArticles();
-    if (result.success) {
-      setArticles(result.data || []);
-    } else {
-      setError(result.error || "Unbekannter Fehler");
-    }
-  };
-
   return (
     <div {...useBlockProps()}>
-      <Button variant="contained" color="primary" onClick={loadArticles}>
-        Lade Artikel
-      </Button>
-
-      {error && <div className="error">Fehler beim Laden der Artikel: {error}</div>}
-
-      {articles.length > 0 && (
-        <div className="article-list">
-          {articles.map((article) => (
-            <Card sx={{ margin: 2 }} key={article.id}>
-              <CardMedia component="img" height="140" image={article._embedded["wp:featuredmedia"][0].source_url} alt={article.title.rendered || "Kein Titel"} />
-              <CardContent>
-                <Typography variant="h5" color="text.primary">
-                  {article.title.rendered}
-                </Typography>
-                <Typography variant="body1" color="text.secondary">
-                  Autor: {article._embedded?.author?.[0]?.name || "Unbekannt"}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Kategorie: {article._embedded?.["wp:term"]?.[0]?.[0]?.name || "Keine Kategorie"}
-                </Typography>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      )}
+      <Card>
+        <CardContent>
+          <Typography variant="h3">Ruhr Nachrichten ArtikelCards</Typography>
+          <Typography variant="h5">Dieses Block-Plugin lädt Artikel von Ruhr Nachrichten und stellt sie als Kartenansicht dar.</Typography>
+          <Typography variant="h5">Die API-Daten werden nur im Frontend geladen und hier im Editor nicht angezeigt.</Typography>
+        </CardContent>
+      </Card>
     </div>
   );
 }

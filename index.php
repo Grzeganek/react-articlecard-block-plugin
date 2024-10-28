@@ -37,7 +37,7 @@ function my_plugin_details_page() {
             <li>Interaktive Kachelansicht: Die Artikel werden als Kacheln präsentiert, die ein einfaches Scrollen und Stöbern ermöglichen.</li>
             <li>Responsives Design: Optimierte Darstellung auf allen Geräten, einschließlich mobiler und Tablet-Ansichten.</li>
             <li>Dynamische Datenanbindung: Die Artikeldaten werden in Echtzeit geladen und aktualisiert, ohne die Seite neu laden zu müssen.</li>
-            <li>Anpassbare Layouts und Filter: Verschiedene Kachelgrößen und Sortieroptionen ermöglichen eine flexible und benutzerfreundliche Darstellung.</li>
+            <li>Direkter Zugriff auf Originalartikel: Jede Kachel enthält einen „Details anzeigen“-Button, der den Originalartikel auf der Ruhr Nachrichten-Website in einem neuen Tab öffnet.</li>
         </ul>';
     echo '<p>Mit ArtikelCards können WordPress-Nutzer ihre Artikel professionell und benutzerfreundlich präsentieren und die Interaktion mit der Website steigern.</p>';
     echo '</div>';
