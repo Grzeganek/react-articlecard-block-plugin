@@ -10,6 +10,7 @@ Die Aufgabe war, ein Block-Plugin zu erstellen. Ich habe mich für TypeScript en
 
 1. Lade das ZIP-Archiv des Plugins hoch.
 2. Installiere und aktiviere das Plugin in WordPress.
+3. Öffne das Project aus dem plugins Ordner von WP und führe npm i und npm run build aus
 
 ## Ruhr Nachrichten API
 
