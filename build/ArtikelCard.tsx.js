@@ -22805,7 +22805,7 @@ function OurComponent() {
   }, "Autor: ", article?._embedded?.author?.[0]?.name || "Unbekannt"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
     className: "article-category"
   }, "Kategorie: ", article?._embedded?.["wp:term"]?.[0]?.[0]?.name || "Keine Kategorie")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_mui_material__WEBPACK_IMPORTED_MODULE_10__["default"], {
-    href: article.link,
+    href: article?.link,
     target: "_blank",
     rel: "noopener noreferrer",
     className: "details-button",

@@ -1,4 +1,3 @@
-import "./index.scss";
 import { useBlockProps } from "@wordpress/block-editor";
 import { registerBlockType, BlockConfiguration, BlockEditProps } from "@wordpress/blocks";
 import metadata from "../block.json";

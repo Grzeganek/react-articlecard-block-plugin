@@ -96,7 +96,7 @@ function OurComponent() {
                   <Typography className="article-author">Autor: {article?._embedded?.author?.[0]?.name || "Unbekannt"}</Typography>
                   <Typography className="article-category">Kategorie: {article?._embedded?.["wp:term"]?.[0]?.[0]?.name || "Keine Kategorie"}</Typography>
                 </CardContent>
-                <Button href={article.link} target="_blank" rel="noopener noreferrer" className="details-button" variant="contained" color="primary">
+                <Button href={article?.link} target="_blank" rel="noopener noreferrer" className="details-button" variant="contained" color="primary">
                   Details anzeigen
                 </Button>
               </Card>
