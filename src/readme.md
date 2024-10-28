@@ -6,7 +6,12 @@ Dieses Plugin fügt einen benutzerdefinierten Block in WordPress hinzu. Es wurde
 
 Die Aufgabe war, ein Block-Plugin zu erstellen. Ich habe mich für TypeScript entschieden, weil es mehr Typensicherheit und besseren Code-Support bietet. Zudem wollte ich Redux integrieren, da es die Verwaltung des Zustands effizienter gestaltet.
 
-## ruhrnachrichten API
+## Installation
+
+1. Lade das ZIP-Archiv des Plugins hoch.
+2. Installiere und aktiviere das Plugin in WordPress.
+
+## Ruhr Nachrichten API
 
 Für die Aufgabe war es erforderlich, eine geeignete API zu untersuchen, um die neuesten 12 Artikel als Kacheln darzustellen. Diese Kacheln sollen jeweils das Artikelbild, den Titel, den Namen des Autors sowie die Kategorie, in der der Artikel veröffentlicht wurde, beinhalten.
 
@@ -14,29 +19,11 @@ Die API, die ich hierfür analysiert habe, stammt von Ruhrnachrichten und ist ü
 
 Da der API-Response durch das \_embed-Parameter erweitert wird, erhalte ich alle eingebetteten Daten, die nötig sind, um die Artikel optisch ansprechend und informativ als Kachel darzustellen. Insbesondere sind hier das Titelbild (Featured Image), der Artikel-Titel, der Autor und die Kategorie verfügbar, was die Implementierung erheblich vereinfacht und mir erlaubt, die gewünschten Informationen effizient in die Kachel-Ansicht einzubinden.
 
-## Installation
-
-1. Lade das ZIP-Archiv des Plugins hoch.
-2. Installiere und aktiviere das Plugin in WordPress.
-
 ## Features
 
 - **React & TypeScript**: Für bessere Wartbarkeit und Typsicherheit.
-- **Zusätzliche Filter**: Die Filterfunktionen sind optional, aber ich habe sie hinzugefügt, um die Benutzerfreundlichkeit zu steigern.
 - **Custom Styles**: Ich habe SCSS verwendet, um die Styles klar zu organisieren und erweiterbar zu machen.
-
-## Codebeispiel
-
-```typescript
-import React, { useState } from "react";
-
-function MyComponent() {
-  const [count, setCount] = useState(0);
-
-  return <button onClick={() => setCount(count + 1)}>Klicks: {count}</button>;
-}
-
-```
+- **Dynamische Datenanbindung**: Die Artikeldaten werden alle 180 Sekunden automatisch aktualisiert, ohne dass die Seite neu geladen werden muss. Aus Gründen der Serverbelastung erfolgt die Aktualisierung jedoch maximal 10 Mal.
 
 ## Clean Code
 

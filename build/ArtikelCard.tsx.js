@@ -22710,28 +22710,44 @@ function OurComponent() {
   const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
   const [isLoading, setIsLoading] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
   const [progress, setProgress] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
+
+  // Zustand für die maximale Anzahl an API-Aufrufen
+  const [pollingCount, setPollingCount] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
+  const maxPollingCount = 10; // Maximal 10 Aktualisierungen
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     const loadArticles = async () => {
       setIsLoading(true);
-
-      // Simulierten Fortschritt starten
       const progressInterval = setInterval(() => {
         setProgress(prev => prev >= 90 ? 95 : prev + 5);
       }, 250);
-
-      // API-Anfrage starten
       const result = await (0,_api_api_ruhrnachrichten__WEBPACK_IMPORTED_MODULE_3__.fetchArticles)();
       clearInterval(progressInterval);
       setProgress(100);
       if (result.success) {
         setArticles(result.data || []);
+        setError(null); // Fehler zurücksetzen, falls vorher ein Fehler auftrat
       } else {
         setError(result.error || "Unbekannter Fehler");
       }
       setIsLoading(false);
     };
+
+    // Erstmaliger API-Aufruf
     loadArticles();
-  }, []);
+
+    // Polling nur ausführen, wenn die maximale Anzahl noch nicht erreicht wurde
+    if (pollingCount < maxPollingCount) {
+      const intervalId = setInterval(() => {
+        loadArticles();
+        setPollingCount(prev => prev + 1); // Erhöhe den Zähler
+      }, 180000); // Aktualisiere alle 180 Secunden
+
+      // Säubere das Intervall bei Komponenten-Unmount
+      return () => clearInterval(intervalId);
+    }
+  }, [pollingCount]); // Abhängig von `pollingCount`
+
   if (isLoading) {
     return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "loading-indicator",
