@@ -22778,10 +22778,7 @@ function OurComponent() {
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "frontend"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    sx: {
-      marginBottom: 2
-    },
-    variant: "h4"
+    className: "title"
   }, "Ruhr Nachrichten"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_mui_material__WEBPACK_IMPORTED_MODULE_6__["default"], {
     container: true,
     spacing: 2
@@ -22792,41 +22789,26 @@ function OurComponent() {
     md: 6,
     key: article.id
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_mui_material__WEBPACK_IMPORTED_MODULE_7__["default"], {
-    sx: {
-      display: "flex",
-      flexDirection: "column",
-      height: "100%"
-    }
+    className: "article-card"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_mui_material__WEBPACK_IMPORTED_MODULE_8__["default"], {
     component: "img",
     height: "200",
     image: article?._embedded["wp:featuredmedia"][0]?.source_url,
     alt: article.title.rendered || "Kein Titel"
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_mui_material__WEBPACK_IMPORTED_MODULE_9__["default"], {
-    sx: {
-      flexGrow: 1
-    }
+    className: "card-content"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    sx: {
-      fontSize: "1em",
-      paddingBottom: 2
-    },
-    variant: "h6",
-    color: "text.primary"
+    className: "article-title",
+    variant: "h6"
   }, article?.title?.rendered), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    variant: "body1",
-    color: "text.secondary"
+    className: "article-author"
   }, "Autor: ", article?._embedded?.author?.[0]?.name || "Unbekannt"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    variant: "body2",
-    color: "text.secondary"
+    className: "article-category"
   }, "Kategorie: ", article?._embedded?.["wp:term"]?.[0]?.[0]?.name || "Keine Kategorie")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_mui_material__WEBPACK_IMPORTED_MODULE_10__["default"], {
-    href: article.link // `article.link` sollte die URL des Artikels enthalten
-    ,
+    href: article.link,
     target: "_blank",
     rel: "noopener noreferrer",
-    sx: {
-      margin: 1
-    },
+    className: "details-button",
     variant: "contained",
     color: "primary"
   }, "Details anzeigen")))) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {

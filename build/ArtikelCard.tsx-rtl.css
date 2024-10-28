@@ -10,7 +10,48 @@
   padding: 20px;
   margin: 20px 0;
 }
-.frontend p {
-  margin: 0;
-  padding: 0;
+.frontend .title {
+  margin-bottom: 20px;
+  font-size: 1.5em;
+}
+.frontend .article-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.frontend .card-content {
+  flex-grow: 1;
+}
+.frontend .article-title {
+  font-size: 1em;
+  padding-bottom: 10px;
+}
+.frontend .article-author,
+.frontend .article-category {
+  color: #757575;
+}
+.frontend .details-button {
+  margin: 10px;
+}
+
+.loading-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+.loading-indicator .loading-title {
+  font-size: 1.5em;
+  margin-top: 10px;
+}
+.loading-indicator .loading-text {
+  color: #757575;
+  margin-top: 10px;
+}
+
+.error {
+  color: red;
+  font-weight: bold;
+  text-align: center;
+  padding: 20px;
 }

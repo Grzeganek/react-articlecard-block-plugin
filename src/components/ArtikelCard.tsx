@@ -82,34 +82,21 @@ function OurComponent() {
 
   return (
     <div className="frontend">
-      <Typography sx={{ marginBottom: 2 }} variant="h4">
-        Ruhr Nachrichten
-      </Typography>
+      <Typography className="title">Ruhr Nachrichten</Typography>
       <Grid container spacing={2}>
         {articles.length > 0 ? (
           articles.map((article) => (
             <Grid item xs={12} sm={6} md={6} key={article.id}>
-              <Card sx={{ display: "flex", flexDirection: "column", height: "100%" }}>
+              <Card className="article-card">
                 <CardMedia component="img" height="200" image={article?._embedded["wp:featuredmedia"][0]?.source_url} alt={article.title.rendered || "Kein Titel"} />
-                <CardContent sx={{ flexGrow: 1 }}>
-                  <Typography sx={{ fontSize: "1em", paddingBottom: 2 }} variant="h6" color="text.primary">
+                <CardContent className="card-content">
+                  <Typography className="article-title" variant="h6">
                     {article?.title?.rendered}
                   </Typography>
-                  <Typography variant="body1" color="text.secondary">
-                    Autor: {article?._embedded?.author?.[0]?.name || "Unbekannt"}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Kategorie: {article?._embedded?.["wp:term"]?.[0]?.[0]?.name || "Keine Kategorie"}
-                  </Typography>
+                  <Typography className="article-author">Autor: {article?._embedded?.author?.[0]?.name || "Unbekannt"}</Typography>
+                  <Typography className="article-category">Kategorie: {article?._embedded?.["wp:term"]?.[0]?.[0]?.name || "Keine Kategorie"}</Typography>
                 </CardContent>
-                <Button
-                  href={article.link} // `article.link` sollte die URL des Artikels enthalten
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  sx={{ margin: 1 }}
-                  variant="contained"
-                  color="primary"
-                >
+                <Button href={article.link} target="_blank" rel="noopener noreferrer" className="details-button" variant="contained" color="primary">
                   Details anzeigen
                 </Button>
               </Card>
