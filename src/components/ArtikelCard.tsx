@@ -75,14 +75,14 @@ function OurComponent() {
               <Card sx={{ display: "flex", flexDirection: "column", height: "100%" }}>
                 <CardMedia component="img" height="200" image={article?._embedded["wp:featuredmedia"][0]?.source_url} alt={article.title.rendered || "Kein Titel"} />
                 <CardContent sx={{ flexGrow: 1 }}>
-                  <Typography variant="h6" color="text.primary">
-                    {article.title.rendered}
+                  <Typography sx={{ fontSize: "1em", paddingBottom: 2 }} variant="h6" color="text.primary">
+                    {article?.title?.rendered}
                   </Typography>
                   <Typography variant="body1" color="text.secondary">
-                    Autor: {article._embedded?.author?.[0]?.name || "Unbekannt"}
+                    Autor: {article?._embedded?.author?.[0]?.name || "Unbekannt"}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Kategorie: {article._embedded?.["wp:term"]?.[0]?.[0]?.name || "Keine Kategorie"}
+                    Kategorie: {article?._embedded?.["wp:term"]?.[0]?.[0]?.name || "Keine Kategorie"}
                   </Typography>
                 </CardContent>
                 <Button

@@ -22786,15 +22786,19 @@ function OurComponent() {
       flexGrow: 1
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    sx: {
+      fontSize: "1em",
+      paddingBottom: 2
+    },
     variant: "h6",
     color: "text.primary"
-  }, article.title.rendered), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  }, article?.title?.rendered), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
     variant: "body1",
     color: "text.secondary"
-  }, "Autor: ", article._embedded?.author?.[0]?.name || "Unbekannt"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  }, "Autor: ", article?._embedded?.author?.[0]?.name || "Unbekannt"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
     variant: "body2",
     color: "text.secondary"
-  }, "Kategorie: ", article._embedded?.["wp:term"]?.[0]?.[0]?.name || "Keine Kategorie")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_mui_material__WEBPACK_IMPORTED_MODULE_10__["default"], {
+  }, "Kategorie: ", article?._embedded?.["wp:term"]?.[0]?.[0]?.name || "Keine Kategorie")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_mui_material__WEBPACK_IMPORTED_MODULE_10__["default"], {
     href: article.link // `article.link` sollte die URL des Artikels enthalten
     ,
     target: "_blank",
